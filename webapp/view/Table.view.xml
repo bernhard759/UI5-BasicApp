@@ -1,0 +1,113 @@
+<mvc:View
+    xmlns="sap.m"
+    controllerName="oth.ui5.tabletest.controller.Table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Shell>
+        <App id="table">
+            <pages>
+                <Page id="idpage" title="TableTest">
+
+                    <FlexBox>
+                        <Title text="Unsere Kunden" titleStyle="H2" class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiSmallMarginTop"/>
+                        <Image src="{myData>/Bilder/0/img/0}" width="auto" class="myimg sapUiSmallMarginTop" height="100px"/>
+                    </FlexBox>
+
+
+                    <l:HorizontalLayout class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                        <Button icon="sap-icon://sort" press="onSetSorter"/>
+                        <Input
+                            id="input"
+                            placeholder="Suche mit Vorschlagswerten und Live Change"
+                            width="350px"
+                            showSuggestion="true"
+                            liveChange="onSearch1"
+                            suggestionItemSelected="onSearch1"
+                            suggestionItems="{myData>/Kundendaten}">
+                            <suggestionItems>
+                                <core:ListItem text="{myData>name}"/>
+                            </suggestionItems>
+                        </Input>
+                    </l:HorizontalLayout>
+
+
+                    <FlexBox class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBegin">
+
+
+                        <Button icon="sap-icon://sort" press="onSetSorter"/>
+
+                        <Input width="350px" placeholder="Suche mit Live Change" id="input2" liveChange="onSearch2" />
+                        <!--LiveChange Workaround mit Inputfield-->
+
+                    </FlexBox>
+
+                    <FlexBox class="sapUiSmallMarginBottom sapUiSmallMarginBegin">
+                        <Input value="{myData>/neuerKunde/0/name}" placeholder="Kundenname" id="nameInput"
+                            required="true" valueLiveUpdate="true" width="200px"/>
+
+                        <Input value="{myData>/neuerKunde/0/city}" placeholder="Stadt" id="cityInput"
+                            required="true" valueLiveUpdate="true" width="200px"/>
+
+                        <Input value="{myData>/neuerKunde/0/alter}" placeholder="Alter" id="ageInput"
+                            required="true" liveChange=".requireInt" valueLiveUpdate="true" width="200px"/>
+
+                        <Button id="speichern" icon="sap-icon://add" text="Speichern" press="onSave"/>
+                    </FlexBox>
+
+                    <FlexBox class="sapUiSmallMarginBottom sapUiSmallMarginBegin">
+                        <Button id="loeschen" icon="sap-icon://delete" text="ausgewählten Eintrag löschen" press="onDelete" />
+                    </FlexBox>
+
+                    <content>
+
+                        <Table id="idtable" growing="true" growingScrollToLoad="true" noDataText="Keine Daten gefunden!" width="auto" mode="SingleSelect" items="{
+                                path: 'myData>/Kundendaten', 
+                                sorter:{
+                                    path: 'ID'
+                                    }
+                                    }">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="{i18n>tableName}"/>
+                                    <ToolbarSpacer/>
+                                    <Button press="onOpenDialog" icon="sap-icon://sort" tooltip="Settings"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column width="auto">
+                                    <Text text="Person ID"/>
+                                </Column>
+                                <Column width="auto">
+                                    <Text text="Name"/>
+                                </Column>
+                                <Column width="auto">
+                                    <Text text="Alter"/>
+                                </Column>
+                                <Column width="auto">
+                                    <Text text="Stadt"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier title="{myData>ID}"/>
+                                        <Text text="{myData>name}"/>
+                                        <Text text="{myData>alter}"/>
+                                        <Text text="{myData>city}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+
+                        </Table>
+
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+
+
+</mvc:View>

@@ -1,0 +1,53 @@
+{
+    "Kundendaten": [
+        {
+            "ID": 0,
+            "name": "Jakob",
+            "alter": 20,
+            "city": "Weiden"
+        },
+        {
+            "ID": 1,
+            "name": "Manuel",
+            "alter": 35,
+            "city": "Amberg"
+        },
+        {
+            "ID": 2,
+            "name": "Jakob",
+            "alter": 19,
+            "city": "Neustadt"
+        },
+        {
+            "ID": 3,
+            "name": "Bob",
+            "alter": 21,
+            "city": "Regensburg"
+        },
+        {
+            "ID": 4,
+            "name": "Jonas",
+            "alter": 27,
+            "city": "Weiden"
+        },
+        {
+            "ID": 5,
+            "name": "Julian",
+            "alter": 25,
+            "city": "Weiden"
+        }
+    ],
+    "neuerKunde": [
+        {
+            "ID": null,
+            "name": "",
+            "alter": null,
+            "city": ""
+        }
+    ],
+    "Bilder": [
+        {
+           "img": ["image/Bild1.png"]
+        }
+    ]
+}
